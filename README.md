@@ -31,7 +31,7 @@ sudo yarn global add serverless
 #### AWS Credentials with CLI
 1. In your terminal, enter the command:
 ```
-aws configure
+sudo aws configure
 ```
 2. Enter your **Access key ID** and then your **Secret access key**
 3. For region type in the region you are using. `Ex: us-east-1`
@@ -49,12 +49,15 @@ serverless plugin install -n serverless-step-functions
 serverless plugin install -n serverless-bundle
 serverless plugin install -n serverless-offline
 ```
-4. Run the install script:
+4. Give the install script permissions:
 ```
-./scripts/install.sh
+chmod +x ./scripts/install.sh
 ```
-You may have to run the script with `sudo` if you do not have permission. If so, reconfigure your AWS credentials using `sudo aws configure`.<br/><br/>
+5. Run the install script:
+```
+sudo ./scripts/install.sh
+```
 If you want to specify the specific AWS region you want to deploy the AWS services, use the follow command format:
 ```
-./scripts/install.sh -r <REGION>
+sudo ./scripts/install.sh -r <REGION>
 ```
