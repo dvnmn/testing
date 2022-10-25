@@ -61,3 +61,5 @@ If you want to specify the specific AWS region you want to deploy the AWS servic
 ```
 sudo ./scripts/install.sh -r <REGION>
 ```
+
+At this point in the process, you have successfully began the deployment of the AWS services required for FWoA. You may get prompts asking you the respond Yes/no for downloads. Follow through the remaining prompts until your deployment is successful.
