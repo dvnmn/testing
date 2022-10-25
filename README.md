@@ -18,7 +18,7 @@ sudo yarn global add serverless
 ```
 ### Configuring your AWS Credentials
 1. Create an IAM User with admin access. **Access Management -> Users -> Add users**
-2. 
+
 <img width="1385" alt="Screen Shot 2022-10-24 at 11 32 32 PM" src="https://user-images.githubusercontent.com/64601967/197676093-6d7c47c7-2885-45fa-b2de-07a014389129.png">
 
 2. Enter a username and then select **Access key - Programmatic access**
