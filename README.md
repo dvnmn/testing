@@ -2,7 +2,7 @@
 ## Installation Process
 The installation process will take you through the Linux/MacOS process.<br />
 **IMPORTANT NOTE: The new M1 Macs or any ARM chip computers will not work with this installation.**
-### Initial Setup:
+### Prerequisite Setup:
  1. Clone the FWoA repository on your local machine. 
 ```
 git clone https://github.com/awslabs/fhir-works-on-aws-deployment.git
@@ -17,6 +17,8 @@ sudo installer -pkg AWSCLIV2.pkg -target /
 sudo yarn global add serverless
 ```
 ### Configuring your AWS Credentials
+
+#### IAM User
 1. Create an IAM User with admin access. **Access Management -> Users -> Add users**
 
 <img width="1385" alt="Screen Shot 2022-10-24 at 11 32 32 PM" src="https://user-images.githubusercontent.com/64601967/197676093-6d7c47c7-2885-45fa-b2de-07a014389129.png">
@@ -25,3 +27,34 @@ sudo yarn global add serverless
 3. For permissions, select **Attach existing policies directly** and then check **AdministratorAccess**
 4. You can skip tags and go through the rest of the prompts to finish creating your IAM User.
 5. After you create the user, make sure you save the **Access key ID** and **Secret access key** in a text file. These will be used later on
+
+#### AWS Credentials with CLI
+1. In your terminal, enter the command:
+```
+aws configure
+```
+2. Enter your **Access key ID** and then your **Secret access key**
+3. For region type in the region you are using. `Ex: us-east-1`
+4. For output format enter `json`
+
+### Installation
+1. In your terminal, change directory into the FWoA repository.
+2. Install all of the dependencies:
+```
+yarn install
+```
+3. Install the required serverless plugins:
+```
+serverless plugin install -n serverless-step-functions
+serverless plugin install -n serverless-bundle
+serverless plugin install -n serverless-offline
+```
+4. Run the install script:
+```
+./scripts/install.sh
+```
+You may have to run the script with `sudo` if you do not have permission. If so, reconfigure your AWS credentials using `sudo aws configure`.<br/><br/>
+If you want to specify the specific AWS region you want to deploy the AWS services, use the follow command format:
+```
+./scripts/install.sh -r <REGION>
+```
