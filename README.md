@@ -20,7 +20,7 @@ The installation process will take you through the Linux/MacOS process.<br />
 **IMPORTANT NOTE: The new M1 Macs or any ARM chip computers will not work with this installation.**
 
 ### Prerequisite Setup:
- 1. Clone the FWoA repository on your local machine. 
+ 1. Clone the FWoA repository on your local machine
 ```
 git clone https://github.com/awslabs/fhir-works-on-aws-deployment.git
 ```
@@ -42,17 +42,18 @@ sudo yarn global add serverless
 
 2. Enter a username and then select **Access key - Programmatic access**
 3. For permissions, select **Attach existing policies directly** and then check **AdministratorAccess**
-4. You can skip tags and go throughAWS Credentials with CLI the rest of the prompts to finish creating your IAM User.
-5. After you create the user, make sure you save the **Access key ID** and **Secret access key** in a text file. These will be used later on
+4. You can skip tags and go through the rest of the prompts to finish creating your IAM User.
+5. After you create the user, make sure you save the **Access key ID** and **Secret access key** somehwere. These will be used later on.
 
 #### AWS Credentials with CLI
 1. In your terminal, enter the command:
 ```
 sudo aws configure
 ```
-2. Enter your **Access key ID** and then your **Secret access key**
-3. For region type in the region you are using. `Ex: us-east-1`
-4. For output format enter `json`
+2. Enter the **Access key ID** and then the **Secret access key** that you just created with your new IAM user.
+3. For region, type in the region you are using. <br/>
+Example: `us-east-1`
+4. For output format, enter `json`
 
 ### Installation:
 1. In your terminal, change directory into the FWoA repository.
@@ -79,7 +80,7 @@ If you want to specify the specific AWS region you want to deploy the AWS servic
 sudo ./scripts/install.sh -r <REGION>
 ```
 
-At this point in the process, you have successfully began the deployment of the AWS services required for FWoA. You may get prompts asking you the respond Yes/no for downloads. Follow through the remaining prompts until your deployment is successful.<br/>
+At this point in the process, you have successfully began the deployment of the AWS services required for FWoA. You may get prompts asking you to respond Yes/No for downloads. Follow through the remaining prompts until your deployment is successful.<br/>
 
 ## Ingesting FHIR Data
 The directions will outline how to ingest FHIR data by hitting the newly created API gateway using Postman.
@@ -108,18 +109,17 @@ python3 scripts/init-auth.py <CLIENT_ID> <REGION>
 
 <img width="453" alt="Screen Shot 2022-10-25 at 2 39 32 PM" src="https://user-images.githubusercontent.com/64601967/197855093-6a142f48-1e71-4aff-88a2-e8b93a519632.png">
 
-2. For `{{API_URL}}`, you should have a newly generated file called `Output_Info.json` in your FWoA repository. Find the API URL in the doc and replace `{{API_URL}}` with that value.
+2. For `{{API_URL}}`, you should have a newly generated file called `Info_Output.log` in your FWoA repository. Find the API URL in the doc 
+```
+endpoints:
+    ANY - <API_URL_LOCATED_HERE>
+```
+Replace `{{API_URL}}` with that value.
 
 <img width="360" alt="Screen Shot 2022-10-25 at 2 42 34 PM" src="https://user-images.githubusercontent.com/64601967/197855691-0dd6fff7-7448-472a-b3a8-769ace00c722.png">
 
 3. Under the **Authorization** tab, replace `{{COGNITO_TOKEN}}` with the one that was generated previously.
-
-<img width="778" alt="Screen Shot 2022-10-25 at 2 43 55 PM" src="https://user-images.githubusercontent.com/64601967/197855957-8540f3f2-e251-45c4-9be0-4b168fa29dca.png">
-
-4. Under the **Headers** tab, replace `{{API_KEY}}` with the one found in that same `Output_Info.json` file.
-
-<img width="613" alt="Screen Shot 2022-10-25 at 2 44 06 PM" src="https://user-images.githubusercontent.com/64601967/197855994-4d1d5c43-a176-4282-986f-c0b11efb74bb.png">
-
+4. Under the **Headers** tab, replace `{{API_KEY}}` with the one found in that same `Info_Output.log` file.
 5. Take a look at the **Body** tab. The sample body contains the information that will be sent to your API. If you have another Bundle you want to use, feel free to replace the sample body with your data.
 6. Click **Send** and if everything goes right you should get a **200 OK** response with the response body at the bottom of the Postman app.
 
