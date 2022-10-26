@@ -120,7 +120,11 @@ Replace `{{API_URL}}` with that value.
 
 3. Under the **Authorization** tab, replace `{{COGNITO_TOKEN}}` with the one that was generated previously.
 4. Under the **Headers** tab, replace `{{API_KEY}}` with the one found in that same `Info_Output.log` file.
-5. Take a look at the **Body** tab. The sample body contains the information that will be sent to your API. If you have another Bundle you want to use, feel free to replace the sample body with your data.
-6. Click **Send** and if everything goes right you should get a **200 OK** response with the response body at the bottom of the Postman app.
+```
+api keys:
+    developer-key-dev - <API_KEY_FOUND_HERE>
+```
+6. Take a look at the **Body** tab. The sample body contains the information that will be sent to your API. If you have another Bundle you want to use, feel free to replace the sample body with your data.
+7. Click **Send** and if everything goes right you should get a **200 OK** response with the response body at the bottom of the Postman app.
 
 ## Running List of Known Issues
